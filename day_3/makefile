@@ -1,32 +1,36 @@
-# 默认
-all: run
+##################################################
+# Makefile
+##################################################
 
-# 编译主引导记录
-mbr.bin: mbr.asm
-	nasm -f bin mbr.asm -o mbr.bin
+BOOT:=boot.asm
+LDR:=loader.asm
+KERNEL:=kernel.asm
+BOOT_BIN:=$(subst .asm,.bin,$(BOOT))
+LDR_BIN:=$(subst .asm,.bin,$(LDR))
+KERNEL_BIN:=$(subst .asm,.bin,$(KERNEL))
 
-# 编译内核加载器
-loader.bin: loader.asm
-	nasm -f bin loader.asm -o loader.bin
+IMG:=a.img
+FLOPPY:=/mnt/floppy/
 
-# 编译内核
-kernel.bin: kernel.asm
-	nasm -f elf kernel.asm -o kernel.o
-	ld -m elf_i386 -s -Ttext 0x30400 -o kernel.bin kernel.o
+.PHONY : everything
 
-# 生成空镜像文件
-os.img: 
-	bximage -fd=1.44M -mode="create" -q os.img
+everything : $(BOOT_BIN) $(LDR_BIN) $(KERNEL_BIN)
+	dd if=$(BOOT_BIN) of=$(IMG) bs=512 count=1 conv=notrunc
+	sudo mount -o loop $(IMG) $(FLOPPY)
+	sudo cp $(LDR_BIN) $(FLOPPY) -v
+	sudo cp $(KERNEL_BIN) $(FLOPPY) -v
+	sudo umount $(FLOPPY)
 
-# 复制MBR、内核加载器到空镜像文件相应位置
-build: mbr.bin loader.bin os.img 
-	dd if=mbr.bin of=os.img bs=512 count=1 conv=notrunc
-	dd if=loader.bin of=os.img bs=512 seek=33 conv=notrunc
-	
-# 复制编译成功的镜像到bochs目录
-run: build
-	cp -f os.img ../bochs
-	
-# 清理编译的中间文件、镜像文件
-clean:
-	rm -rf *.o *.img *.bin bootpack
+clean :
+	rm -f $(BOOT_BIN) $(LDR_BIN) $(KERNEL_BIN) *.o
+
+$(BOOT_BIN) : $(BOOT)
+	nasm $< -o $@
+
+$(LDR_BIN) : $(LDR)
+	nasm $< -o $@
+
+$(KERNEL_BIN) : $(KERNEL)
+	nasm -f elf -o $(subst .asm,.o,$(KERNEL)) $<
+	ld -m elf_i386 -s -Ttext 0x30400 -o $@ $(subst .asm,.o,$(KERNEL))
+
