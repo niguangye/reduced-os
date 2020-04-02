@@ -1,22 +1,6 @@
 # reduced-os
 The OS implemented by myself
 
-## 版本日志
-
-- V0.1.0	2020.01.16
-
-  引导扇区编写，并打印helloworld
-
-- V0.1.1	2020.01.20
-
-  引导扇区读取18个柱面，并跳转0x2c00,打印helloworld
-
-- V0.1.2    2020.02.10
-
-  完成汇编版本的GDT实现
-
-  
-
 ## 开发环境
 
 - Win10
