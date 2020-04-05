@@ -21,8 +21,7 @@ write_mem8:	; void write_mem8(int addr, int data);
 		
 draw:
 
-	mov	edi, (80 * 10 + 49) * 2	; 屏幕第11行， 第79列
-	mov ah,	0ch		; 0000:黑底	1100：?字
-	mov al, 'x'
+	mov	edi, [ESP+4]	; 屏幕第11行， 第79列
+	mov al, [ESP+8]
 	mov	[gs:edi], ax
-	jmp $
+	ret

@@ -3,7 +3,7 @@
 ; 编译方法：nasm pmtest1.asm -o pmtest1.bin
 ; ========================
 
-%include		"pm.inc"		;常量、宏以及一些说明
+%include		"loader.inc"		;常量、宏以及一些说明
 
 org		0c200h
 
@@ -25,6 +25,7 @@ GdtPtr		dw		GdtLen - 1			; GDT界限
 SelectorCode32		equ		LABEL_DESC_CODE32	- LABEL_GDT
 SelectorVideo		equ		LABEL_DESC_VIDEO	- LABEL_GDT
 ; END of [SECTION .gdt]
+
 
 [SECTION .s16]
 [BITS	16]
@@ -78,6 +79,7 @@ LABEL_BEGIN:
 [BITS	32]
 
 LABEL_SEG_CODE32:
+
 	mov	ax, SelectorVideo
 	mov	gs, ax	;视频段选择子（目的）
 	
