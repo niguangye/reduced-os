@@ -1,10 +1,28 @@
 # reduced-os
-The OS implemented by myself
+在自行实现简单OS的同时，提供本项目给后来者参考使用，力求降低将整个过程的难度
+
+## 环境准备
+
+- WSL安装、同时在WSL内安装GCC、NASM、MAKE等
+- bochs安装及环境变量配置
+- Sublime text3 安装（可选）
+
+## 开发编译流程
+
+0. 见环境准备
+
+1. 在windows环境下使用编辑器（推荐Sublime Text3）编写代码
+2. 在WSL下使用GCC、NASM、MAKE编译代码、生成镜像
+3. 在windows运行Bochs（bochs目录提供了简单配置）
+   1. run.bat 运行镜像
+   2. debug.bat 调试镜像,调试方法见docs目录
+
+
 
 ## 开发环境
 
 - Win10
-- 编译环境 Ubuntu 18.04.4 LTS（Windows WSL）
+- 编译环境 Ubuntu 18.04.4 LTS（WSL: Windows Subsystem for Linux）
 - 运行环境 Bochs 2.6.11
 
 ## 注意
