@@ -1,1 +1,0 @@
-"C:\Program Files\Bochs-2.6.11\bochs.exe" -f bochs.src

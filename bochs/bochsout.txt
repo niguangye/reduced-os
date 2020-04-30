@@ -26,14 +26,14 @@
 00000000000i[      ] Optimization configuration
 00000000000i[      ]   RepeatSpeedups support: yes
 00000000000i[      ]   Fast function calls: yes
-00000000000i[      ]   Handlers Chaining speedups: no
+00000000000i[      ]   Handlers Chaining speedups: yes
 00000000000i[      ] Devices configuration
 00000000000i[      ]   PCI support: i440FX i430FX i440BX
 00000000000i[      ]   Networking support: NE2000 E1000
 00000000000i[      ]   Sound support: SB16 ES1370
 00000000000i[      ]   USB support: UHCI OHCI EHCI xHCI
 00000000000i[      ]   VGA extension support: vbe cirrus voodoo
-00000000000i[MEM0  ] allocated memory at 0000021B0F1CE040. after alignment, vector=0000021B0F1CF000
+00000000000i[MEM0  ] allocated memory at 000002484F50C040. after alignment, vector=000002484F50D000
 00000000000i[MEM0  ] 64.00MB
 00000000000i[MEM0  ] mem block size = 0x00020000, blocks=512
 00000000000i[MEM0  ] rom at 0xfffe0000/131072 ('C:\Program Files\Bochs-2.6.11/BIOS-bochs-latest')
@@ -43,7 +43,7 @@
 00000000000i[DEV   ] PIIX3 PCI-to-ISA bridge present at device 1, function 0
 00000000000i[PLUGIN] init_dev of 'cmos' plugin device by virtual method
 00000000000i[CMOS  ] Using local time for initial clock
-00000000000i[CMOS  ] Setting initial clock to: Tue Apr 07 11:34:15 2020 (time0=1586230455)
+00000000000i[CMOS  ] Setting initial clock to: Thu Apr 30 17:56:19 2020 (time0=1588240579)
 00000000000i[PLUGIN] init_dev of 'dma' plugin device by virtual method
 00000000000i[DMA   ] channel 4 used by cascade
 00000000000i[PLUGIN] init_dev of 'pic' plugin device by virtual method
@@ -62,8 +62,7 @@
 00000000000i[MEM0  ] rom at 0xc0000/41984 ('C:\Program Files\Bochs-2.6.11/VGABIOS-lgpl-latest')
 00000000000i[PLUGIN] init_dev of 'floppy' plugin device by virtual method
 00000000000i[DMA   ] channel 2 used by Floppy Drive
-00000000000i[FLOPPY] tried to open 'os.img' read/write: No such file or directory
-00000000000i[FLOPPY] tried to open 'os.img' read only: No such file or directory
+00000000000i[FLOPPY] fd0: 'os.img' ro=0, h=2,t=80,spt=18
 00000000000i[FLOPPY] Using boot sequence floppy, none, none
 00000000000i[FLOPPY] Floppy boot signature check is enabled
 00000000000i[PLUGIN] init_dev of 'acpi' plugin device by virtual method
@@ -90,7 +89,6 @@
 00000000000i[PLUGIN] init_dev of 'serial' plugin device by virtual method
 00000000000i[SER   ] com1 at 0x03f8 irq 4 (mode: null)
 00000000000i[PLUGIN] init_dev of 'gameport' plugin device by virtual method
-00000000000i[PLUGIN] init_dev of 'iodebug' plugin device by virtual method
 00000000000i[PLUGIN] init_dev of 'usb_uhci' plugin device by virtual method
 00000000000i[DEV   ] USB UHCI present at device 1, function 2
 00000000000i[UHCI  ] USB UHCI initialized
@@ -109,7 +107,6 @@
 00000000000i[PLUGIN] register state of 'parallel' plugin device by virtual method
 00000000000i[PLUGIN] register state of 'serial' plugin device by virtual method
 00000000000i[PLUGIN] register state of 'gameport' plugin device by virtual method
-00000000000i[PLUGIN] register state of 'iodebug' plugin device by virtual method
 00000000000i[PLUGIN] register state of 'usb_uhci' plugin device by virtual method
 00000000000i[PLUGIN] register state of 'acpi' plugin device by virtual method
 00000000000i[PLUGIN] register state of 'hpet' plugin device by virtual method
@@ -183,6 +180,50 @@
 00000000000i[PLUGIN] reset of 'parallel' plugin device by virtual method
 00000000000i[PLUGIN] reset of 'serial' plugin device by virtual method
 00000000000i[PLUGIN] reset of 'gameport' plugin device by virtual method
-00000000000i[PLUGIN] reset of 'iodebug' plugin device by virtual method
 00000000000i[PLUGIN] reset of 'usb_uhci' plugin device by virtual method
-00000000000i[      ] set SIGINT handler to bx_debug_ctrlc_handler
+00000004635i[BIOS  ] $Revision: 13752 $ $Date: 2019-12-30 14:16:18 +0100 (Mon, 30 Dec 2019) $
+00000318039i[KBD   ] reset-disable command received
+00000320741i[BIOS  ] Starting rombios32
+00000321184i[BIOS  ] Shutdown flag 0
+00000321754i[BIOS  ] ram_size=0x04000000
+00000322211i[BIOS  ] ram_end=64MB
+00000622856i[WINGUI] dimension update x=720 y=400 fontheight=16 fontwidth=9 bpp=8
+00001136446i[BIOS  ] Found 1 cpu(s)
+00001150003i[BIOS  ] bios_table_addr: 0x000f9db8 end=0x000fcc00
+00001477003i[PCI   ] i440FX PMC write to PAM register 59 (TLB Flush)
+00001805903i[P2ISA ] PCI IRQ routing: PIRQA# set to 0x0b
+00001805929i[P2ISA ] PCI IRQ routing: PIRQB# set to 0x09
+00001805929i[P2ISA ] PCI IRQ routing: PIRQC# set to 0x0b
+00001805929i[P2ISA ] PCI IRQ routing: PIRQD# set to 0x09
+00001805929i[P2ISA ] write: ELCR2 = 0x0a
+00001806616i[BIOS  ] PIIX3/PIIX4 init: elcr=00 0a
+00001820083i[BIOS  ] PCI: bus=0 devfn=0x00: vendor_id=0x8086 device_id=0x1237 class=0x0600
+00001822396i[BIOS  ] PCI: bus=0 devfn=0x08: vendor_id=0x8086 device_id=0x7000 class=0x0601
+00001824548i[BIOS  ] PCI: bus=0 devfn=0x09: vendor_id=0x8086 device_id=0x7010 class=0x0101
+00001825104i[PIDE  ] BAR #4: i/o base address = 0xc000
+00001825644i[BIOS  ] region 4: 0x0000c000
+00001827441i[BIOS  ] PCI: bus=0 devfn=0x0a: vendor_id=0x8086 device_id=0x7020 class=0x0c03
+00001827959i[UHCI  ] BAR #4: i/o base address = 0xc020
+00001828515i[BIOS  ] region 4: 0x0000c020
+00001828748i[UHCI  ] new IRQ line = 9
+00001830326i[BIOS  ] PCI: bus=0 devfn=0x0b: vendor_id=0x8086 device_id=0x7113 class=0x0680
+00001830684i[ACPI  ] new IRQ line = 11
+00001830924i[ACPI  ] new IRQ line = 9
+00001830945i[ACPI  ] new PM base address: 0xb000
+00001830945i[ACPI  ] new SM base address: 0xb100
+00001830977i[PCI   ] setting SMRAM control register to 0x4a
+00001995097i[CPU0  ] Enter to System Management Mode
+00001995097i[CPU0  ] enter_system_management_mode: temporary disable VMX while in SMM mode
+00001995101i[CPU0  ] RSM: Resuming from System Management Mode
+00002159123i[PCI   ] setting SMRAM control register to 0x0a
+00002185538i[BIOS  ] MP table addr=0x000f9e90 MPC table addr=0x000f9dc0 size=0xc8
+00002187714i[BIOS  ] SMBIOS table addr=0x000f9ea0
+00002189545i[BIOS  ] ACPI tables: RSDP addr=0x000f9fd0 ACPI DATA addr=0x03ff0000 size=0xff8
+00002193002i[BIOS  ] Firmware waking vector 0x3ff00cc
+00002195609i[PCI   ] i440FX PMC write to PAM register 59 (TLB Flush)
+00002196190i[BIOS  ] bios_table_cur_addr: 0x000f9ff4
+00002325203i[VBIOS ] VGABios $Id: vgabios.c 226 2020-01-02 21:36:23Z vruppert $
+00002325286i[BXVGA ] VBE known Display Interface b0c0
+00002325305i[BXVGA ] VBE known Display Interface b0c5
+00002327949i[VBIOS ] VBE Bios $Id: vbe.c 228 2020-01-02 23:09:02Z vruppert $
+00014918908i[BIOS  ] Booting from 0000:7c00
